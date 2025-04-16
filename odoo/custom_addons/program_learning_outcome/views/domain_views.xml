@@ -1,0 +1,35 @@
+<odoo>
+  <record id="view_domain_tree" model="ir.ui.view">
+    <field name="name">program_learning_outcome.domain.tree</field>
+    <field name="model">program_learning_outcome.domain</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="view_domain_form" model="ir.ui.view">
+    <field name="name">program_learning_outcome.domain.form</field>
+    <field name="model">program_learning_outcome.domain</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="program_id"/>
+            <field name="sub_domain_ids" widget="many2many_tags"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="action_domain" model="ir.actions.act_window">
+    <field name="name">Domains</field>
+    <field name="res_model">program_learning_outcome.domain</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <menuitem id="menu_domain" name="Domains" parent="plo_structure_menu" action="action_domain"/>
+</odoo>

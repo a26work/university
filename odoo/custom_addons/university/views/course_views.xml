@@ -1,0 +1,51 @@
+<odoo>
+  <record id="view_course_tree" model="ir.ui.view">
+    <field name="name">university.course.tree</field>
+    <field name="model">university.course</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="code"/>
+        <field name="program_ids"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="view_course_form" model="ir.ui.view">
+    <field name="name">university.course.form</field>
+    <field name="model">university.course</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="code"/>
+            <field name="program_ids"/>
+            <field name="outcome_ids" widget="many2many_tags"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="view_course_search" model="ir.ui.view">
+    <field name="name">university.course.search</field>
+    <field name="model">university.course</field>
+    <field name="arch" type="xml">
+      <search>
+        <field name="name"/>
+        <field name="code"/>
+        <field name="program_ids"/>
+      </search>
+    </field>
+  </record>
+
+  <record id="action_course" model="ir.actions.act_window">
+    <field name="name">Courses</field>
+    <field name="res_model">university.course</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <menuitem id="university_course_menu" name="Courses" parent="university_academic_menu" action="action_course"/>
+</odoo>
+

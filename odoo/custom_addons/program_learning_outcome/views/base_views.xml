@@ -1,0 +1,4 @@
+<odoo>
+  <menuitem id="plo_root_menu" name="PLO Management" sequence="10"/>
+  <menuitem id="plo_structure_menu" name="Learning Structure" parent="plo_root_menu"/>
+</odoo>

@@ -1,0 +1,52 @@
+<odoo>
+  <!-- Admin Views -->
+  <record id="view_admin_tree" model="ir.ui.view">
+    <field name="name">university.admin.tree</field>
+    <field name="model">university.admin</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="specialization"/>
+        <field name="salary"/>
+        <field name="user_id"/>
+        <field name="college_ids"/>
+        <field name="department_ids"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="view_admin_form" model="ir.ui.view">
+    <field name="name">university.admin.form</field>
+    <field name="model">university.admin</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="specialization"/>
+            <field name="salary"/>
+            <field name="user_id"/>
+            <field name="college_ids" widget="many2many_tags"/>
+            <field name="department_ids" widget="many2many_tags"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="view_admin_search" model="ir.ui.view">
+    <field name="name">university.admin.search</field>
+    <field name="model">university.admin</field>
+    <field name="arch" type="xml">
+      <search>
+        <field name="user_id"/>
+      </search>
+    </field>
+  </record>
+
+  <record id="action_admin" model="ir.actions.act_window">
+    <field name="name">Admins</field>
+    <field name="res_model">university.admin</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <menuitem id="university_admin_menu" name="Admins" parent="university_people_menu" action="action_admin"/>
+</odoo>

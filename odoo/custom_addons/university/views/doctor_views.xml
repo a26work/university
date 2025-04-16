@@ -1,0 +1,50 @@
+<odoo>
+  <!-- Doctor Views -->
+  <record id="view_doctor_tree" model="ir.ui.view">
+    <field name="name">university.doctor.tree</field>
+    <field name="model">university.doctor</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="specialization"/>
+        <field name="salary"/>
+        <field name="user_id"/>
+        <field name="course_ids"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="view_doctor_form" model="ir.ui.view">
+    <field name="name">university.doctor.form</field>
+    <field name="model">university.doctor</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="specialization"/>
+            <field name="salary"/>
+            <field name="user_id"/>
+            <field name="course_ids" widget="many2many_tags"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="view_doctor_search" model="ir.ui.view">
+    <field name="name">university.doctor.search</field>
+    <field name="model">university.doctor</field>
+    <field name="arch" type="xml">
+      <search>
+        <field name="user_id"/>
+      </search>
+    </field>
+  </record>
+
+  <record id="action_doctor" model="ir.actions.act_window">
+    <field name="name">Doctors</field>
+    <field name="res_model">university.doctor</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <menuitem id="university_doctor_menu" name="Doctors" parent="university_people_menu" action="action_doctor"/>
+</odoo>

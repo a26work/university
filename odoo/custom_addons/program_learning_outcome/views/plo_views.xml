@@ -1,0 +1,36 @@
+<odoo>
+  <record id="view_plo_tree" model="ir.ui.view">
+    <field name="name">program_learning_outcome.plo.tree</field>
+    <field name="model">program_learning_outcome.plo</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="sub_domain_id"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="view_plo_form" model="ir.ui.view">
+    <field name="name">program_learning_outcome.plo.form</field>
+    <field name="model">program_learning_outcome.plo</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="sub_domain_id"/>
+            <field name="course_outcome_ids" widget="many2many_tags"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="action_plo" model="ir.actions.act_window">
+    <field name="name">PLOs</field>
+    <field name="res_model">program_learning_outcome.plo</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <menuitem id="menu_plo" name="PLOs" parent="plo_structure_menu" action="action_plo"/>
+</odoo>

@@ -1,0 +1,47 @@
+<odoo>
+  <record id="view_course_outcome_tree" model="ir.ui.view">
+    <field name="name">university.course.outcome.tree</field>
+    <field name="model">university.course.outcome</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="course_id"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="view_course_outcome_form" model="ir.ui.view">
+    <field name="name">university.course.outcome.form</field>
+    <field name="model">university.course.outcome</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="course_id"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="view_course_outcome_search" model="ir.ui.view">
+    <field name="name">university.course.outcome.search</field>
+    <field name="model">university.course.outcome</field>
+    <field name="arch" type="xml">
+      <search>
+        <field name="name"/>
+        <field name="course_id"/>
+      </search>
+    </field>
+  </record>
+
+  <record id="action_course_outcome" model="ir.actions.act_window">
+    <field name="name">Course Outcomes</field>
+    <field name="res_model">university.course.outcome</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <menuitem id="university_course_outcome_menu" name="Course Outcomes" parent="university_academic_menu" action="action_course_outcome"/>
+</odoo>
+

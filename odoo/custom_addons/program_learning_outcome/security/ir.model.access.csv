@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_domain,access_domain,model_program_learning_outcome_domain,base.group_user,1,1,1,1
+access_sub_domain,access_sub_domain,model_program_learning_outcome_sub_domain,base.group_user,1,1,1,1
+access_plo,access_plo,model_program_learning_outcome_plo,base.group_user,1,1,1,1
