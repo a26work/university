@@ -1,0 +1,146 @@
+<odoo>
+  <!-- Report Action -->
+  <record id="action_report_invoice_custom" model="ir.actions.report">
+    <field name="name">Invoice Custom</field>
+    <field name="model">account.move</field>
+    <field name="report_type">qweb-pdf</field>
+    <field name="report_name">custom_app.report_invoice_document</field>
+    <field name="report_file">custom_app.report_invoice_document</field>
+    <field name="binding_model_id" ref="account.model_account_move"/>
+    <field name="binding_type">report</field>
+    <field name="print_report_name">'Invoice - %s' % (object.name or '')</field>
+  </record>
+
+  <!-- Report Template -->
+  <template id="report_invoice_document">
+    <t t-call="web.external_layout">
+      <t t-foreach="docs" t-as="o">
+        <t t-set="company" t-value="o.company_id"/>
+        <main class="o_report_layout_standard">
+
+          <!-- Header Block (Left | Center Logo | Right RTL) -->
+          <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+            <div style="width: 30%; text-align: left;">
+              <strong><t t-esc="company.name or ''"/></strong><br/>
+              <t t-esc="company.street or ''"/><br/>
+              <t t-esc="company.city or ''"/> - <t t-esc="company.country_id.name or ''"/>
+            </div>
+            <div style="width: 30%; text-align: center;">
+              <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="height: 60px;"/>
+            </div>
+            <div style="width: 30%; text-align: right; direction: rtl;">
+              <strong><t t-esc="company.name or ''"/></strong><br/>
+              <t t-esc="company.street or ''"/><br/>
+              <t t-esc="company.city or ''"/> - <t t-esc="company.country_id.name or ''"/>
+            </div>
+          </div>
+
+          <!-- Invoice Info Table -->
+          <table class="table table-sm" style="width: 100%; margin-top: 10px;">
+            <tr>
+              <td>
+                <p>Type</p><p>Number</p><p>Issue Date</p><p>Confirm Date</p>
+                <p>Due Date</p><p>Date of Supply</p><p>Reference</p><p>Source</p>
+              </td>
+              <td>
+                <p><t t-esc="o.move_type or ''"/></p>
+                <p><t t-esc="o.name or ''"/></p>
+                <p><t t-esc="o.invoice_date or ''"/></p>
+                <p><t t-esc="o.date or ''"/></p>
+                <p><t t-esc="o.invoice_date_due or ''"/></p>
+                <p><t t-esc="o.invoice_date or ''"/></p>
+                <p><t t-esc="o.ref or ''"/></p>
+                <p><t t-esc="o.invoice_origin or ''"/></p>
+              </td>
+              <td style="direction: rtl;">
+                <p>النوع</p><p>الرقم</p><p>تاريخ الإصدار</p><p>تاريخ التأكيد</p>
+                <p>تاريخ الاستحقاق</p><p>تاريخ التوريد</p><p>المرجع</p><p>المصدر</p>
+              </td>
+              <td>
+                <img t-if="o.qr_code" t-att-src="'data:image/png;base64,%s' % o.qr_code" style="width:80px; height:80px;"/>
+              </td>
+            </tr>
+          </table>
+
+          <!-- Customer Info Table -->
+          <table class="table table-sm" style="width: 100%; margin-top: 20px;">
+            <tr>
+              <td>
+                <p>Type</p><p>Name</p><p>Building No</p><p>Street Name</p>
+                <p>District</p><p>City</p><p>Country</p><p>Postal Code</p><p>VAT Number</p>
+              </td>
+              <td>
+                <p>Customer</p>
+                <p><t t-esc="o.partner_id.name or ''"/></p>
+                <p><t t-esc="o.partner_id.street or ''"/></p>
+                <p><t t-esc="o.partner_id.street or ''"/></p>
+                <p><t t-esc="o.partner_id.street2 or ''"/></p>
+                <p><t t-esc="o.partner_id.city or ''"/></p>
+                <p><t t-esc="o.partner_id.country_id.name or ''"/></p>
+                <p><t t-esc="o.partner_id.zip or ''"/></p>
+                <p><t t-esc="o.partner_id.vat or ''"/></p>
+              </td>
+              <td style="direction: rtl;">
+                <p>النوع</p><p>الاسم</p><p>رقم المبنى</p><p>اسم الشارع</p>
+                <p>الحي</p><p>المدينة</p><p>البلد</p><p>الرمز البريدي</p><p>الرقم الضريبي</p>
+              </td>
+            </tr>
+          </table>
+
+          <!-- Invoice Lines Table -->
+          <table class="table table-sm mt32" style="width: 100%; margin-top: 30px;" border="1">
+            <thead>
+              <tr>
+                <th>Description</th><th>Quantity</th><th>Unit Price</th>
+                <th>Taxes</th><th>Subtotal</th><th>Total</th><th>Currency</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr t-foreach="o.invoice_line_ids" t-as="line">
+                <td><t t-esc="line.name or ''"/></td>
+                <td><t t-esc="line.quantity or 0"/></td>
+                <td><t t-esc="line.price_unit or 0"/></td>
+                <td>
+                  <t t-if="line.tax_ids">
+                    <t t-foreach="line.tax_ids" t-as="tax" t-separator=", ">
+                      <t t-esc="tax.name"/>
+                    </t>
+                  </t>
+                  <t t-if="not line.tax_ids">-</t>
+                </td>
+                <td><t t-esc="line.price_subtotal or 0"/></td>
+                <td><t t-esc="line.price_total or 0"/></td>
+                <td><t t-esc="o.currency_id.name or ''"/></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Totals -->
+          <table class="table table-sm" style="width: 100%; margin-top: 20px;" border="1">
+            <thead>
+              <tr><th>English</th><th>Totals</th><th style="direction: rtl;">العربية</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Total Excl. VAT</td>
+                <td><t t-esc="o.amount_untaxed or 0"/> <t t-esc="o.currency_id.symbol or ''"/></td>
+                <td style="direction: rtl;">الإجمالي بدون الضريبة</td>
+              </tr>
+              <tr>
+                <td>Total VAT</td>
+                <td><t t-esc="o.amount_tax or 0"/> <t t-esc="o.currency_id.symbol or ''"/></td>
+                <td style="direction: rtl;">إجمالي الضريبة</td>
+              </tr>
+              <tr>
+                <td>Total Incl. VAT</td>
+                <td><t t-esc="o.amount_total or 0"/> <t t-esc="o.currency_id.symbol or ''"/></td>
+                <td style="direction: rtl;">الإجمالي مع الضريبة</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </main>
+      </t>
+    </t>
+  </template>
+</odoo>
