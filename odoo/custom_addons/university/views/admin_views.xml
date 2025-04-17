@@ -1,8 +1,8 @@
 <odoo>
   <!-- Admin Views -->
   <record id="view_admin_tree" model="ir.ui.view">
-    <field name="name">university.admin.tree</field>
-    <field name="model">university.admin</field>
+    <field name="name">admin.tree</field>
+    <field name="model">admin</field>
     <field name="arch" type="xml">
       <tree>
         <field name="specialization"/>
@@ -15,8 +15,8 @@
   </record>
 
   <record id="view_admin_form" model="ir.ui.view">
-    <field name="name">university.admin.form</field>
-    <field name="model">university.admin</field>
+    <field name="name">admin.form</field>
+    <field name="model">admin</field>
     <field name="arch" type="xml">
       <form>
         <sheet>
@@ -33,8 +33,8 @@
   </record>
 
   <record id="view_admin_search" model="ir.ui.view">
-    <field name="name">university.admin.search</field>
-    <field name="model">university.admin</field>
+    <field name="name">admin.search</field>
+    <field name="model">admin</field>
     <field name="arch" type="xml">
       <search>
         <field name="user_id"/>
@@ -44,7 +44,7 @@
 
   <record id="action_admin" model="ir.actions.act_window">
     <field name="name">Admins</field>
-    <field name="res_model">university.admin</field>
+    <field name="res_model">admin</field>
     <field name="view_mode">tree,form</field>
   </record>
 

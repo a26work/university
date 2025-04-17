@@ -1,24 +1,24 @@
 <odoo>
   <record id="view_plo_tree" model="ir.ui.view">
-    <field name="name">program_learning_outcome.plo.tree</field>
-    <field name="model">program_learning_outcome.plo</field>
+    <field name="name">program.learning.outcome.tree</field>
+    <field name="model">program.learning.outcome</field>
     <field name="arch" type="xml">
       <tree>
         <field name="name"/>
-        <field name="sub_domain_id"/>
+        <field name="subdomain_id"/>
       </tree>
     </field>
   </record>
 
   <record id="view_plo_form" model="ir.ui.view">
-    <field name="name">program_learning_outcome.plo.form</field>
-    <field name="model">program_learning_outcome.plo</field>
+    <field name="name">program.learning.outcome.form</field>
+    <field name="model">program.learning.outcome</field>
     <field name="arch" type="xml">
       <form>
         <sheet>
           <group>
             <field name="name"/>
-            <field name="sub_domain_id"/>
+            <field name="subdomain_id"/>
             <field name="course_outcome_ids" widget="many2many_tags"/>
           </group>
         </sheet>
@@ -27,8 +27,8 @@
   </record>
 
   <record id="action_plo" model="ir.actions.act_window">
-    <field name="name">PLOs</field>
-    <field name="res_model">program_learning_outcome.plo</field>
+    <field name="name">Program Learning Outcomes</field>
+    <field name="res_model">program.learning.outcome</field>
     <field name="view_mode">tree,form</field>
   </record>
 

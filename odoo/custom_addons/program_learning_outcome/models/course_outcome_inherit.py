@@ -2,6 +2,6 @@
 from odoo import models, fields
 
 class CourseOutcome(models.Model):
-    _inherit = 'university.course.outcome'
+    _inherit = 'course.outcome'
 
-    plo_id = fields.Many2one('program_learning_outcome.plo', string="PLO")
+    plo_id = fields.Many2one('program.learning.outcome', string="PLO")

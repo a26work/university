@@ -1,8 +1,8 @@
 <odoo>
   <!-- Student Views -->
   <record id="view_student_tree" model="ir.ui.view">
-    <field name="name">university.student.tree</field>
-    <field name="model">university.student</field>
+    <field name="name">student.tree</field>
+    <field name="model">student</field>
     <field name="arch" type="xml">
       <tree>
         <field name="level"/>
@@ -13,8 +13,8 @@
   </record>
 
   <record id="view_student_form" model="ir.ui.view">
-    <field name="name">university.student.form</field>
-    <field name="model">university.student</field>
+    <field name="name">student.form</field>
+    <field name="model">student</field>
     <field name="arch" type="xml">
       <form>
         <sheet>
@@ -30,8 +30,8 @@
   </record>
 
   <record id="view_student_search" model="ir.ui.view">
-    <field name="name">university.student.search</field>
-    <field name="model">university.student</field>
+    <field name="name">student.search</field>
+    <field name="model">student</field>
     <field name="arch" type="xml">
       <search>
         <field name="level"/>
@@ -42,7 +42,7 @@
 
   <record id="action_student" model="ir.actions.act_window">
     <field name="name">Students</field>
-    <field name="res_model">university.student</field>
+    <field name="res_model">student</field>
     <field name="view_mode">tree,form</field>
   </record>
 

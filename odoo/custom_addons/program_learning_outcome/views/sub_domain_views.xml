@@ -1,7 +1,7 @@
 <odoo>
   <record id="view_sub_domain_tree" model="ir.ui.view">
-    <field name="name">program_learning_outcome.sub_domain.tree</field>
-    <field name="model">program_learning_outcome.sub_domain</field>
+    <field name="name">program.learning.outcome.subdomain.tree</field>
+    <field name="model">program.learning.outcome.subdomain</field>
     <field name="arch" type="xml">
       <tree>
         <field name="name"/>
@@ -11,8 +11,8 @@
   </record>
 
   <record id="view_sub_domain_form" model="ir.ui.view">
-    <field name="name">program_learning_outcome.sub_domain.form</field>
-    <field name="model">program_learning_outcome.sub_domain</field>
+    <field name="name">program.learning.outcome.subdomain.form</field>
+    <field name="model">program.learning.outcome.subdomain</field>
     <field name="arch" type="xml">
       <form>
         <sheet>
@@ -28,7 +28,7 @@
 
   <record id="action_sub_domain" model="ir.actions.act_window">
     <field name="name">Sub Domains</field>
-    <field name="res_model">program_learning_outcome.sub_domain</field>
+    <field name="res_model">program.learning.outcome.subdomain</field>
     <field name="view_mode">tree,form</field>
   </record>
 

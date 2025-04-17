@@ -1,8 +1,8 @@
 <odoo>
   <!-- Doctor Views -->
   <record id="view_doctor_tree" model="ir.ui.view">
-    <field name="name">university.doctor.tree</field>
-    <field name="model">university.doctor</field>
+    <field name="name">doctor.tree</field>
+    <field name="model">doctor</field>
     <field name="arch" type="xml">
       <tree>
         <field name="specialization"/>
@@ -14,8 +14,8 @@
   </record>
 
   <record id="view_doctor_form" model="ir.ui.view">
-    <field name="name">university.doctor.form</field>
-    <field name="model">university.doctor</field>
+    <field name="name">doctor.form</field>
+    <field name="model">doctor</field>
     <field name="arch" type="xml">
       <form>
         <sheet>
@@ -31,8 +31,8 @@
   </record>
 
   <record id="view_doctor_search" model="ir.ui.view">
-    <field name="name">university.doctor.search</field>
-    <field name="model">university.doctor</field>
+    <field name="name">doctor.search</field>
+    <field name="model">doctor</field>
     <field name="arch" type="xml">
       <search>
         <field name="user_id"/>
@@ -42,7 +42,7 @@
 
   <record id="action_doctor" model="ir.actions.act_window">
     <field name="name">Doctors</field>
-    <field name="res_model">university.doctor</field>
+    <field name="res_model">doctor</field>
     <field name="view_mode">tree,form</field>
   </record>
 
