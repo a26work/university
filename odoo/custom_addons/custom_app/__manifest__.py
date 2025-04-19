@@ -5,7 +5,7 @@
     'version': '17.0.0.1.0',
     'summary': 'Custom App',
     'description': 'Custom App.',
-    'depends': ['account'],
+    'depends': ['base', 'account', 'web'],
     'data': [
         'reports/invoice_report.xml',
     ],
