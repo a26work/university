@@ -1,0 +1,58 @@
+<odoo>
+  <record id="college_tree" model="ir.ui.view">
+    <field name="name">college Tree</field>
+    <field name="model">college</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="code"/>
+        <field name="active"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="college_form" model="ir.ui.view">
+    <field name="name">college Form</field>
+    <field name="model">college</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="code"/>
+            <field name="active"/>
+            <field name="department_ids">
+                <tree editable="bottom">
+                    <field name="name"/>
+                </tree>
+            </field>
+            <field name="admin_ids">
+                <tree editable="bottom">
+                    <field name="name"/>
+                </tree>
+            </field>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="college_search" model="ir.ui.view">
+    <field name="name">college Search</field>
+    <field name="model">college</field>
+    <field name="arch" type="xml">
+      <search>
+        <field name="name"/>
+      </search>
+    </field>
+  </record>
+
+  <record id="college_action" model="ir.actions.act_window">
+    <field name="name">College action</field>
+    <field name="res_model">college</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <menuitem id="college_menu" name="Colleges" parent="academic_menu" action="college_action"/>
+</odoo>
+

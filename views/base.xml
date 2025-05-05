@@ -1,0 +1,5 @@
+<odoo>
+  <menuitem id="root_menu" name="University Management"/>
+  <menuitem id="academic_menu" name="Academic Structure" parent="root_menu"/>
+  <menuitem id="people_menu" name="University People" parent="root_menu"/>
+</odoo>

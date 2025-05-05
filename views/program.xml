@@ -1,0 +1,59 @@
+<odoo>
+  <record id="program_tree" model="ir.ui.view">
+    <field name="name">program Tree</field>
+    <field name="model">program</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="code"/>
+        <field name="degree"/>
+        <field name="active"/>
+        <field name="department_id"/>
+        <field name="college_id"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="program_form" model="ir.ui.view">
+    <field name="name">program Form</field>
+    <field name="model">program</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="code"/>
+            <field name="degree"/>
+            <field name="active"/>
+            <field name="department_id"/>
+            <field name="college_id"/>
+            <field name="course_ids">
+                <tree editable="bottom">
+                    <field name="name"/>
+                </tree>
+            </field>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="program_search" model="ir.ui.view">
+    <field name="name">program Search</field>
+    <field name="model">program</field>
+    <field name="arch" type="xml">
+      <search>
+        <field name="name"/>
+      </search>
+    </field>
+  </record>
+
+  <record id="program_action" model="ir.actions.act_window">
+    <field name="name">Program Action</field>
+    <field name="res_model">program</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <menuitem id="program_menu" name="Programs" parent="academic_menu" action="program_action"/>
+</odoo>
+

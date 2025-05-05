@@ -1,0 +1,59 @@
+<odoo>
+  <record id="admin_tree" model="ir.ui.view">
+    <field name="name">admin Tree</field>
+    <field name="model">admin</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="specialization"/>
+        <field name="gender"/>
+        <field name="salary"/>
+        <field name="admin_id"/>
+        <field name="user_id"/>
+        <field name="active"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="admin_form" model="ir.ui.view">
+    <field name="name">admin Form</field>
+    <field name="model">admin</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="specialization"/>
+            <field name="gender"/>
+            <field name="salary"/>
+            <field name="admin_id"/>
+            <field name="user_id"/>
+            <field name="active"/>
+            <field name="college_ids" widget="many2many_tags"/>
+            <field name="department_ids" widget="many2many_tags"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="admin_search" model="ir.ui.view">
+    <field name="name">admin Search</field>
+    <field name="model">admin</field>
+    <field name="arch" type="xml">
+      <search>
+        <field name="name"/>
+        <field name="admin_id"/>
+        <field name="user_id"/>
+      </search>
+    </field>
+  </record>
+
+  <record id="admin_action" model="ir.actions.act_window">
+    <field name="name">Admins Action</field>
+    <field name="res_model">admin</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <menuitem id="admin_menu" name="Admins" parent="people_menu" action="admin_action"/>
+</odoo>

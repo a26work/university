@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Colleges -->
+        <record id="college_1" model="college">
+            <field name="name">College of Computer Science</field>
+            <field name="code">CCS</field>
+        </record>
+        <record id="college_2" model="college">
+            <field name="name">College of Engineering</field>
+            <field name="code">CEN</field>
+        </record>
+        <record id="college_3" model="college">
+            <field name="name">College of Sharia</field>
+            <field name="code">CSH</field>
+        </record>
+
+        <!-- Departments -->
+        <record id="department_1" model="department">
+            <field name="name">Computer Science</field>
+            <field name="code">CS001</field>
+            <field name="college_id" ref="college_1"/>
+        </record>
+        <record id="department_2" model="department">
+            <field name="name">Mechanical Engineering</field>
+            <field name="code">ME001</field>
+            <field name="college_id" ref="college_2"/>
+        </record>
+        <record id="department_3" model="department">
+            <field name="name">Electrical Engineering</field>
+            <field name="code">EE001</field>
+            <field name="college_id" ref="college_2"/>
+        </record>
+
+        <!-- Programs -->
+        <record id="program_1" model="program">
+            <field name="name">BSc in Computer Science</field>
+            <field name="code">BSC_CS</field>
+            <field name="degree">bachelor</field>
+            <field name="department_id" ref="department_1"/>
+        </record>
+
+        <record id="program_2" model="program">
+            <field name="name">Diploma in Mechatronics</field>
+            <field name="code">DPL_MT</field>
+            <field name="degree">diploma</field>
+            <field name="department_id" ref="department_2"/>
+        </record>
+
+        <record id="program_3" model="program">
+            <field name="name">MSc in Electrical Systems</field>
+            <field name="code">MSC_EE</field>
+            <field name="degree">master</field>
+            <field name="department_id" ref="department_3"/>
+        </record>
+
+        <!-- Courses -->
+        <record id="course_1" model="course">
+            <field name="name">Introduction to Programming</field>
+            <field name="code">CS101</field>
+            <field name="program_ids" eval="[(4, ref('program_1'))]"/>
+        </record>
+
+        <record id="course_2" model="course">
+            <field name="name">Data Structures</field>
+            <field name="code">CS201</field>
+            <field name="program_ids" eval="[(4, ref('program_1'))]"/>
+        </record>
+
+        <record id="course_3" model="course">
+            <field name="name">Mechanical Basics</field>
+            <field name="code">ME101</field>
+            <field name="program_ids" eval="[(4, ref('program_2'))]"/>
+        </record>
+    </data>
+</odoo>
